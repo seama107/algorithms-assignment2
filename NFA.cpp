@@ -107,9 +107,7 @@ NFA NFA::translateToDFA() {
         if(!(alreadyCalculated)) {
           statesToCalculateStack.push_back(nextState);
         }
-        else {
-          cout << "Already calculated " << nextStateName << "\n";
-        }
+
       }
 
       dTransitionFunctions.insert(deterministicTransition);

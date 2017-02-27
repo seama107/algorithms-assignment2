@@ -1,6 +1,4 @@
-CC=g++
-CFLAGS= -std=c++11 -w
-OBJ= DFAtranslator.o NFA.o transitionFunction.o vectorFunctions.o
+OBJ= DFAtranslator.cpp NFA.cpp transitionFunction.cpp vectorFunctions.cpp
 
 DFAtranslator: $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ)
+	g++ -std=c++11 *.cpp
