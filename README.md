@@ -9,7 +9,7 @@
 ## Setup:
 
 Compile : `make`.
-Run : `./DFAtranslator <NFA_FILENAME>`
+Run : `./a.out <NFA_FILENAME>`
 
 ### Known Bugs:
 
