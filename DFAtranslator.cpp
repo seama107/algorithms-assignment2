@@ -97,7 +97,7 @@ NFA createNFAromInputFile(ifstream &NFAFile) {
   for_each(lineSplit.begin(), lineSplit.end(), &removeBrackets );
   set<string> acceptStates = convertToSet(lineSplit);
 
-  set<transitionFunction> transitionFunctions = {};
+  set<transitionFunction> transitionFunctions;
   while(getline(NFAFile, line)) {
     vector<string> splitLine = split(line, ' ');
     string state = removeBrackets(splitLine[0].substr(0, splitLine[0].size() - 1));

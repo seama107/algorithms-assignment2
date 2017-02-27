@@ -45,8 +45,8 @@ NFA NFA::translateToDFA() {
   set<string> dStates = {"EM"};
   set<string> dAlphabet = (this->alphabet);
   string dStartState;
-  set<string> dAcceptStates = {};
-  set<transitionFunction> dTransitionFunctions = {};
+  set<string> dAcceptStates;
+  set<transitionFunction> dTransitionFunctions;
 
   set<string> currentState = {this->startState};
   currentState = epsilonClosureOfState(currentState);
@@ -55,8 +55,8 @@ NFA NFA::translateToDFA() {
   //This keeps track of what states have already been calculated, so
   //no repeats are done in the while loop - possibly leading to an
   //infinite loop
-  set<set<string>> statesAlreadyCalculated = {};
-  vector<set<string>> statesToCalculateStack = {};
+  set<set<string>> statesAlreadyCalculated;
+  vector<set<string>> statesToCalculateStack;
   statesToCalculateStack.push_back(currentState);
 
   while(statesToCalculateStack.size() > 0 ) {
@@ -78,7 +78,7 @@ NFA NFA::translateToDFA() {
 
     //Creating a transitionFunction for every symbol for every reachable state
     for(string symbol : this->alphabet) {
-      set<string> nextState = {};
+      set<string> nextState;
       for(string substate : currentState) {
         transitionFunction departureFunction = {substate, symbol, "*"};
         set<transitionFunction> transitionsFromSubstate = subsetWhereEquals(this->transitionFunctions, departureFunction);
@@ -129,7 +129,7 @@ set<string> NFA::epsilonClosureOfState(set<string> currentState) {
   //find all transitionFunctions whose initial state is a membet of
   //the current state and whose symbol is epsilon, and then appends
   //currentState to hold the output of those transitionFunctions
-  set<transitionFunction> possibleTransitionFunctions = {};
+  set<transitionFunction> possibleTransitionFunctions;
   for(string state : currentState) {
     possibleTransitionFunctions.insert( transitionFunction {state, "EPS", "*"} );
   }

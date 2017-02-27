@@ -31,7 +31,7 @@ std::set<T> convertToSet(std::vector<T> input) {
 template<typename T, typename U>
 std::set<T> subsetWhereEquals(std::set<T> s, U condition) {
   //Returns a subset of s where each element == condition
-  std::set<T> subset = {};
+  std::set<T> subset;
   for(T elem : s) {
     if(elem == condition) {
       subset.insert(elem);
@@ -42,7 +42,7 @@ std::set<T> subsetWhereEquals(std::set<T> s, U condition) {
 
 template<typename T, typename U>
 std::set<T> setIntersect(std::set<T> set1,std::set<U> set2) {
-  std::set<T> subset = {};
+  std::set<T> subset;
   for(U condition : set2) {
     std::set<T> validMembers = subsetWhereEquals(set1, condition);
     subset.insert(validMembers.begin(), validMembers.end());
