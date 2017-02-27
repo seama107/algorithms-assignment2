@@ -101,8 +101,8 @@ NFA createNFAromInputFile(ifstream &NFAFile) {
   while(getline(NFAFile, line)) {
     vector<string> splitLine = split(line, ' ');
     string state = removeBrackets(splitLine[0].substr(0, splitLine[0].size() - 1));
-    string inputSymbol = splitLine[1];
-    string finalState = removeBrackets(splitLine[3]);
+    string inputSymbol = splitLine[splitLine.size() - 3];
+    string finalState = removeBrackets(splitLine[splitLine.size() - 1]);
     transitionFunction newTF = {state, inputSymbol, finalState};
     transitionFunctions.insert( newTF );
   }
